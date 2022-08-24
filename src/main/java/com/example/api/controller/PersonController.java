@@ -28,7 +28,7 @@ public class PersonController {
         return this.ps.getAll();
     }
 
-    @PutMapping("UPDATE/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<?> updatePerson(@RequestBody Person p) {
         Optional<Person> person = this.ps.findPerson(p.getId_Person());
         if(!person.isEmpty()){

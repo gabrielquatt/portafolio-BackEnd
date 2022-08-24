@@ -12,18 +12,18 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/work_experience/")
+@RequestMapping("api/experience/")
 public class ExperienceController {
 
     @Autowired
     private ExperienceService ws;
 
-    @GetMapping(value = "GET/all", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "all", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Experience> allWork_Experience() {
         return ws.getAll();
     }
 
-    @DeleteMapping("DELETE/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteWork_Experience(@PathVariable(value = "id") Long id) {
         Optional<Experience> work_Experience = this.ws.getById(id);
         if (work_Experience.isEmpty()){
@@ -33,14 +33,14 @@ public class ExperienceController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("POST")
+    @PostMapping("save")
     public ResponseEntity<?> postWork_Experience(@RequestBody Experience w) {
         if (this.ws.save(w))
             return new ResponseEntity<>(HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
     }
 
-    @PutMapping("UPDATE")
+    @PutMapping("update")
     public ResponseEntity<?> updateWork_Experience(@RequestBody Experience w) {
         Optional<Experience> work_Experience = this.ws.getById(w.getId());
         if(!work_Experience.isEmpty()){

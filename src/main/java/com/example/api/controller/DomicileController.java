@@ -17,12 +17,12 @@ public class DomicileController {
     @Autowired
     private DomicileService ds;
 
-    @GetMapping(value = "GET/all", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "all", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Domicile> allDomicile() {
         return ds.getAll();
     }
 
-    @DeleteMapping("DELETE/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteDomicile(@PathVariable(value = "id") Long id) {
         Optional<Domicile> domicile = this.ds.getById(id);
         if (domicile.isEmpty()){
@@ -32,14 +32,14 @@ public class DomicileController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("POST")
+    @PostMapping("save")
     public ResponseEntity<?> postDomicile(@RequestBody Domicile c) {
         if (this.ds.save(c))
             return new ResponseEntity<>(HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
     }
 
-    @PutMapping("UPDATE")
+    @PutMapping("update")
     public ResponseEntity<?> updateClient(@RequestBody Domicile c) {
         Optional<Domicile> client = this.ds.getById(c.getId_Domicile());
         if(!client.isEmpty()){

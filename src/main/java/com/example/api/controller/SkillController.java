@@ -18,12 +18,12 @@ public class SkillController {
     @Autowired
     private SkillService ss;
 
-    @GetMapping(value = "GET/all", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "all", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Skill> allSkill() {
         return ss.getAll();
     }
 
-    @DeleteMapping("DELETE/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteSkill(@PathVariable(value = "id") Long id) {
         Optional<Skill> skill = this.ss.getById(id);
         if (skill.isEmpty()){
@@ -33,14 +33,14 @@ public class SkillController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("POST")
+    @PostMapping("save")
     public ResponseEntity<?> postSkill(@RequestBody Skill s) {
         if (this.ss.save(s))
             return new ResponseEntity<>(HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
     }
 
-    @PutMapping("UPDATE")
+    @PutMapping("update")
     public ResponseEntity<?> updateSkill(@RequestBody Skill s) {
         Optional<Skill> skill = this.ss.getById(s.getIdSkill());
         if(!skill.isEmpty()){

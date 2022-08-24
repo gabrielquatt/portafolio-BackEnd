@@ -1,4 +1,5 @@
 package com.example.api.controller;
+import com.example.api.model.User;
 import com.example.api.servicios.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,8 +15,8 @@ public class UserController {
     private UserService us;
 
     @GetMapping(value = "authenticate", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> allTitleEducation(@PathVariable(value = "name") String name, @PathVariable(value = "pass") String pass) {
-        if(us.authenticate(name,pass)){
+    public ResponseEntity<?> allTitleEducation(@RequestBody User u) {
+        if(us.authenticate(u.getName(), u.getPass())){
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);

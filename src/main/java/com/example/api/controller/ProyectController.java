@@ -18,12 +18,12 @@ public class ProyectController {
     @Autowired
     private ProyectService ps;
 
-    @GetMapping(value = "GET/all", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "all", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Proyect> allProyect() {
         return ps.getAll();
     }
 
-    @DeleteMapping("DELETE/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteProyect(@PathVariable(value = "id") Long id) {
         Optional<Proyect> proyect = this.ps.getById(id);
         if (proyect.isEmpty()){
@@ -33,14 +33,14 @@ public class ProyectController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("POST")
+    @PostMapping("save")
     public ResponseEntity<?> postProyect(@RequestBody Proyect p) {
         if (this.ps.save(p))
             return new ResponseEntity<>(HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
     }
 
-    @PutMapping("UPDATE")
+    @PutMapping("update")
     public ResponseEntity<?> updateProyect(@RequestBody Proyect p) {
         Optional<Proyect> proyect = this.ps.getById(p.getId_proyect());
         if(!proyect.isEmpty()){

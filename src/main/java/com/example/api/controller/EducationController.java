@@ -23,7 +23,7 @@ public class EducationController {
         return ts.getAll();
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteTitleEducation(@PathVariable(value = "id") Long id) {
         Optional<TitleEducation> titleEducation = this.ts.getById(id);
         if (titleEducation.isEmpty()){
