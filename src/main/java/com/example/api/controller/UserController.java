@@ -14,8 +14,8 @@ public class UserController {
     @Autowired
     private UserService us;
 
-    @GetMapping(value = "authenticate", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> allTitleEducation(@RequestBody User u) {
+    @PostMapping(value = "authenticate", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> CheckUser(@RequestBody User u) {
         if(us.authenticate(u.getName(), u.getPass())){
             return new ResponseEntity<>(HttpStatus.OK);
         }
