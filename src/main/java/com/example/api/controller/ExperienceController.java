@@ -24,7 +24,6 @@ public class ExperienceController {
         return ws.getAll();
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteWork_Experience(@PathVariable(value = "id") Long id) {
         Optional<Experience> work_Experience = this.ws.getById(id);
