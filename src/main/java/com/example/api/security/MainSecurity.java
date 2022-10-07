@@ -45,6 +45,7 @@ public class MainSecurity {
                 .antMatchers(HttpMethod.GET,"/api/person/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/proyect/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/skill/**").permitAll()
+                .antMatchers(HttpMethod.GET,"/api/img/**").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/auth/**").permitAll()
                 // --- No Authenticated --- //
 

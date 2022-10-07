@@ -1,5 +1,6 @@
 package com.example.api.servicios;
 
+import com.example.api.model.Experience;
 import com.example.api.model.Person;
 import com.example.api.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +29,8 @@ public class PersonService {
         this.person.saveAndFlush(p);
         return true;
     };
+
+    public Optional<Person> getById(Long id) {
+        return this.person.findById(id);
+    }
 }

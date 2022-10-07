@@ -20,7 +20,7 @@ public class Person {
     private String mail;
     private String about;
     private String ocupation;
-    private String img_background;
+    //private String img_background;
     private String img_perfil;
     private Long id_Domicile_fk;
 

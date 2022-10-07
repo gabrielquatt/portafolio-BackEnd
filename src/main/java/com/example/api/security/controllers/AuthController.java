@@ -69,20 +69,20 @@ public class AuthController {
     }
 
     //Solo un Admin puede Crear Un Usuario para esta APP
-    @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/register")
-    public ResponseEntity<Object> resgister(@RequestBody NewUser newUser, BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
-            return new ResponseEntity<>(new Message("Revise los campos e intente nuevamente"), HttpStatus.BAD_REQUEST);
-        User user = new User(newUser.getUserName(), newUser.getEmail(),
-                passwordEncoder.encode(newUser.getPassword()));
-        Set<Role> roles = new HashSet<>();
-        roles.add(roleService.getByRoleName(RoleList.ROLE_USER).get());
-        if (newUser.getRoles().contains("admin"))
-            roles.add(roleService.getByRoleName(RoleList.ROLE_ADMIN).get());
-        user.setRoles(roles);
-        userService.save(user);
-        return new ResponseEntity<>(new Message("Registro exitoso! Inicie sesión"), HttpStatus.CREATED);
-    }
+//    @PreAuthorize("hasRole('ADMIN')")
+//    @PostMapping("/register")
+//    public ResponseEntity<Object> resgister(@RequestBody NewUser newUser, BindingResult bindingResult) {
+//        if (bindingResult.hasErrors())
+//            return new ResponseEntity<>(new Message("Revise los campos e intente nuevamente"), HttpStatus.BAD_REQUEST);
+//        User user = new User(newUser.getUserName(), newUser.getEmail(),
+//                passwordEncoder.encode(newUser.getPassword()));
+//        Set<Role> roles = new HashSet<>();
+//        roles.add(roleService.getByRoleName(RoleList.ROLE_USER).get());
+//        if (newUser.getRoles().contains("admin"))
+//            roles.add(roleService.getByRoleName(RoleList.ROLE_ADMIN).get());
+//        user.setRoles(roles);
+//        userService.save(user);
+//        return new ResponseEntity<>(new Message("Registro exitoso! Inicie sesión"), HttpStatus.CREATED);
+//    }
     
 }
