@@ -20,7 +20,7 @@ public class ImageController {
     @Autowired
     private IUploadFileService uploadService;
 
-    @GetMapping("/upload/{nombreFoto:.+}")
+    @GetMapping("upload/{nombreFoto:.+}")
     public ResponseEntity<Resource> verFoto(@PathVariable String nombreFoto){
         Resource recurso = null;
         try {

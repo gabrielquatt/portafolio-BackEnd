@@ -46,7 +46,7 @@ public class PersonController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
     }
-    @PostMapping("/upload")
+    @PostMapping("upload")
     public ResponseEntity<?> uploadWork_Experience(@RequestParam("archivo") MultipartFile archivo, @RequestParam("id") Long id){
 
         Map<String, Object> response = new HashMap<>();
