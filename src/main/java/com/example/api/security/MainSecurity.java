@@ -38,6 +38,7 @@ public class MainSecurity {
                 .authorizeRequests()
 
                 // --- No Authenticated --- //
+                .antMatchers(HttpMethod.GET,"/api/cloudinary/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/domicile/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/education/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/experience/**").permitAll()
