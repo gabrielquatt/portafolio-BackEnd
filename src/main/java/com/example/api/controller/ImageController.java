@@ -53,7 +53,7 @@ public class ImageController {
                         (String)result.get("url"),
                         (String)result.get("public_id"));
         imagenService.save(imagen);
-        return new ResponseEntity(new Mensaje("imagen subida"), HttpStatus.OK);
+        return new ResponseEntity(imagen, HttpStatus.OK);
     }
 
     @DeleteMapping("delete/{id}")
