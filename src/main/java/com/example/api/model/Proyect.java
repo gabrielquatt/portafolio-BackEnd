@@ -17,4 +17,6 @@ public class Proyect {
     private String name;
     private String link;
     private String description;
+    private String imgProyect;
+    private String imgId;
 }

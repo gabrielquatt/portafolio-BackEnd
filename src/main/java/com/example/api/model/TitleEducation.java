@@ -12,7 +12,6 @@ public class TitleEducation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_Education;
-
     private String school;
     private String title;
     private String condition;

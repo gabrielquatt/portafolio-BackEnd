@@ -13,7 +13,9 @@ public class Experience {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     private String anio;
     private String description;
-    private String logo;
+    private String logoUrl;
+    private String idImg;
 }

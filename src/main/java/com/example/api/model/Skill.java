@@ -14,7 +14,7 @@ public class Skill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idSkill;
     private String name;
-    private String img;
+    private String imgUrl;
+    private String imgId;
     private Long level;
-
 }
