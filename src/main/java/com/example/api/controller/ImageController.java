@@ -57,7 +57,7 @@ public class ImageController {
     }
 
     @DeleteMapping("delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") int id)throws IOException {
+    public ResponseEntity<?> delete(@PathVariable(value = "id") int id)throws IOException {
         if(!imagenService.exists(id))
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         Imagen imagen = imagenService.getOne(id).get();
