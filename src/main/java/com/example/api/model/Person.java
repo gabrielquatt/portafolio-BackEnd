@@ -22,7 +22,7 @@ public class Person {
     private String ocupation;
     //private String img_background;
     private String img_perfil;
-    private String img_id;
+    private Long img_id;
     private Long id_Domicile_fk;
 
 }

@@ -15,6 +15,6 @@ public class Skill {
     private Long idSkill;
     private String name;
     private String imgUrl;
-    private String imgId;
+    private Long imgId;
     private Long level;
 }

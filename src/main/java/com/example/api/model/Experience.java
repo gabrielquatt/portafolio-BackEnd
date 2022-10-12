@@ -17,5 +17,5 @@ public class Experience {
     private String anio;
     private String description;
     private String logoUrl;
-    private String idImg;
+    private Long idImg;
 }

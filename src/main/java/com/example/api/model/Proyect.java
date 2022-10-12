@@ -18,5 +18,5 @@ public class Proyect {
     private String link;
     private String description;
     private String imgProyect;
-    private String imgId;
+    private Long imgId;
 }
