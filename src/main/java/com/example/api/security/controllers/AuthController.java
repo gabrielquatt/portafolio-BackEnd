@@ -71,8 +71,6 @@ public class AuthController {
     //Solo un Admin puede Crear Un Usuario para esta APP
     @PostMapping("/register")
     public ResponseEntity<Object> resgister(@RequestBody NewUser newUser, BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
-            return new ResponseEntity<>(new Message("Revise los campos e intente nuevamente"), HttpStatus.BAD_REQUEST);
         User user = new User(newUser.getUserName(), newUser.getEmail(),
                 passwordEncoder.encode(newUser.getPassword()));
         Set<Role> roles = new HashSet<>();
