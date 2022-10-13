@@ -1,5 +1,4 @@
 package com.example.api.controller;
-
 import com.example.api.model.InformationEdu;
 import com.example.api.servicios.TitleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,12 +6,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/title/")
+@RequestMapping("api/infoedu/")
 public class TitleController {
 
     @Autowired
@@ -42,7 +40,7 @@ public class TitleController {
 
     @PutMapping("update")
     public ResponseEntity<?> updateTitleEducation(@RequestBody InformationEdu t) {
-        Optional<InformationEdu> titleEducation = this.ts.getById(t.getId_title());
+        Optional<InformationEdu> titleEducation = this.ts.getById(t.getId());
         if(!titleEducation.isEmpty()){
             if (this.ts.save(t))
                 return new ResponseEntity<>(HttpStatus.OK);

@@ -11,9 +11,9 @@ public class InformationEdu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_title;
+    private Long id;
     private String school;
-    private String name;
+    private String title;
     private String condition;
 
 }
