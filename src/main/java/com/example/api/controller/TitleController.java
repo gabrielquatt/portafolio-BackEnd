@@ -7,9 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
-
 
 @RestController
 @RequestMapping("api/title/")
@@ -42,7 +42,7 @@ public class TitleController {
 
     @PutMapping("update")
     public ResponseEntity<?> updateTitleEducation(@RequestBody Title t) {
-        Optional<Title> titleEducation = this.ts.getById(t.getIdTitle());
+        Optional<Title> titleEducation = this.ts.getById(t.getId_title());
         if(!titleEducation.isEmpty()){
             if (this.ts.save(t))
                 return new ResponseEntity<>(HttpStatus.OK);

@@ -5,16 +5,15 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
+@Getter @Setter
 @Entity
 public class Title {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTitle;
+    private Long id_title;
     private String school;
-    private String title;
+    private String name;
     private String condition;
 
 }

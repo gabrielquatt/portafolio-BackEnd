@@ -23,6 +23,5 @@ public class Person {
     //private String img_background;
     private String img_perfil;
     private Long img_id;
-    private Long id_Domicile_fk;
 
 }
