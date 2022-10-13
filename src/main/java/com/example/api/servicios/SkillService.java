@@ -14,7 +14,6 @@ public class SkillService {
     @Autowired
     private SkillRepository skill;
 
-
     public List<Skill> getAll() {
         return this.skill.findAll();
     }
@@ -24,7 +23,7 @@ public class SkillService {
     }
 
     public Optional<Skill> getById(Long id) {
-        return  this.skill.findById(id);
+        return this.skill.findById(id);
     }
 
     public boolean save(Skill s) {
