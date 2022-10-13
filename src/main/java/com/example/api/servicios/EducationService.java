@@ -1,6 +1,6 @@
 package com.example.api.servicios;
 
-import com.example.api.model.EducationTitle;
+import com.example.api.model.Education;
 import com.example.api.repository.EducationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class EducationService {
     private EducationRepository education;
 
 
-    public List<EducationTitle> getAll() {
+    public List<Education> getAll() {
         return this.education.findAll();
     }
 
@@ -23,11 +23,11 @@ public class EducationService {
         this.education.deleteById(id);
     }
 
-    public Optional<EducationTitle> getById(Long id) {
+    public Optional<Education> getById(Long id) {
         return this.education.findById(id);
     }
 
-    public boolean save(EducationTitle t) {
+    public boolean save(Education t) {
         this.education.saveAndFlush(t);
         return true;
     }

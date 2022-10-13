@@ -1,7 +1,7 @@
 package com.example.api.repository;
 
-import com.example.api.model.EducationTitle;
+import com.example.api.model.Education;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EducationRepository extends JpaRepository<EducationTitle, Long> {
+public interface EducationRepository extends JpaRepository<Education, Long> {
 }
