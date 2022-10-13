@@ -53,9 +53,7 @@ public class AuthController {
      * si existe se retornara el Token de la sesion
      * */
     @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody LoginUser loginUser, BindingResult bidBindingResult){
-        if(bidBindingResult.hasErrors())
-            return new ResponseEntity<>(new Message("Revise sus credenciales"), HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Object> login(@RequestBody LoginUser loginUser){
         try {
                 UsernamePasswordAuthenticationToken authenticationToken= new UsernamePasswordAuthenticationToken(loginUser.getUserName(), loginUser.getPassword());
                 Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
@@ -64,7 +62,7 @@ public class AuthController {
                 JwtDto jwtDto = new JwtDto(jwt);
                 return new ResponseEntity<>(jwtDto, HttpStatus.OK);
         } catch (Exception e) {
-                return new ResponseEntity<>(new Message("Revise sus credenciales"), HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>(new Message("Error"), HttpStatus.BAD_REQUEST);
         }
     }
 
