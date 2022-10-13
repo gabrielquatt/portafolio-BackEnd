@@ -39,7 +39,7 @@ public class MainSecurity {
                 // --- No Authenticated --- //
                 .antMatchers(HttpMethod.GET,"/api/cloudinary/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/domicile/**").permitAll()
-                .antMatchers(HttpMethod.GET,"/api/education/**").permitAll()
+                .antMatchers(HttpMethod.GET,"/api/title/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/experience/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/language/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/person/**").permitAll()
