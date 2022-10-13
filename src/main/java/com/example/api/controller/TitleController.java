@@ -1,7 +1,7 @@
 package com.example.api.controller;
 
-import com.example.api.model.Title_Edu;
-import com.example.api.servicios.EducationService;
+import com.example.api.model.Title;
+import com.example.api.servicios.TitleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,20 +12,20 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/education/")
-public class EducationController {
+@RequestMapping("api/title/")
+public class TitleController {
 
     @Autowired
-    private EducationService ts;
+    private TitleService ts;
 
     @GetMapping(value = "all", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Title_Edu> allTitleEducation() {
+    public List<Title> allTitleEducation() {
         return ts.getAll();
     }
 
     @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteTitleEducation(@PathVariable(value = "id") Long id) {
-        Optional<Title_Edu> titleEducation = this.ts.getById(id);
+        Optional<Title> titleEducation = this.ts.getById(id);
         if (titleEducation.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
@@ -34,7 +34,7 @@ public class EducationController {
     }
 
     @PostMapping("save")
-    public ResponseEntity<?> postTitleEducation(@RequestBody Title_Edu t) {
+    public ResponseEntity<?> postTitleEducation(@RequestBody Title t) {
         if (this.ts.save(t)){
             return new ResponseEntity<>(HttpStatus.OK);
         }
@@ -42,8 +42,8 @@ public class EducationController {
     }
 
     @PutMapping("update")
-    public ResponseEntity<?> updateTitleEducation(@RequestBody Title_Edu t) {
-        Optional<Title_Edu> titleEducation = this.ts.getById(t.getId());
+    public ResponseEntity<?> updateTitleEducation(@RequestBody Title t) {
+        Optional<Title> titleEducation = this.ts.getById(t.getId());
         if(!titleEducation.isEmpty()){
             if (this.ts.save(t))
                 return new ResponseEntity<>(HttpStatus.OK);
