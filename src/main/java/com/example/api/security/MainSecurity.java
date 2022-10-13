@@ -36,7 +36,6 @@ public class MainSecurity {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-
                 // --- No Authenticated --- //
                 .antMatchers(HttpMethod.GET,"/api/cloudinary/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/domicile/**").permitAll()
@@ -49,7 +48,6 @@ public class MainSecurity {
                 .antMatchers(HttpMethod.GET,"/api/img/**").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/auth/**").permitAll()
                 // --- No Authenticated --- //
-
         .anyRequest().authenticated()
         .and()
         .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
