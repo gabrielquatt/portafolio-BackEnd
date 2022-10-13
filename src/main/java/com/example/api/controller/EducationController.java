@@ -1,6 +1,6 @@
 package com.example.api.controller;
 
-import com.example.api.model.Education;
+import com.example.api.model.EducationTitle;
 import com.example.api.servicios.EducationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,13 +19,13 @@ public class EducationController {
     private EducationService ts;
 
     @GetMapping(value = "all", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Education> allTitleEducation() {
+    public List<EducationTitle> allTitleEducation() {
         return ts.getAll();
     }
 
     @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteTitleEducation(@PathVariable(value = "id") Long id) {
-        Optional<Education> titleEducation = this.ts.getById(id);
+        Optional<EducationTitle> titleEducation = this.ts.getById(id);
         if (titleEducation.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
@@ -34,7 +34,7 @@ public class EducationController {
     }
 
     @PostMapping("save")
-    public ResponseEntity<?> postTitleEducation(@RequestBody Education t) {
+    public ResponseEntity<?> postTitleEducation(@RequestBody EducationTitle t) {
         if (this.ts.save(t)){
             return new ResponseEntity<>(HttpStatus.OK);
         }
@@ -42,8 +42,8 @@ public class EducationController {
     }
 
     @PutMapping("update")
-    public ResponseEntity<?> updateTitleEducation(@RequestBody Education t) {
-        Optional<Education> titleEducation = this.ts.getById(t.getId_Education());
+    public ResponseEntity<?> updateTitleEducation(@RequestBody EducationTitle t) {
+        Optional<EducationTitle> titleEducation = this.ts.getById(t.getId_education());
         if(!titleEducation.isEmpty()){
             if (this.ts.save(t))
                 return new ResponseEntity<>(HttpStatus.OK);

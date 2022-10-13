@@ -7,11 +7,11 @@ import javax.persistence.*;
 
 @Getter @Setter
 @Entity
-public class Education {
+public class EducationTitle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_Education;
+    private Long id_education;
     private String school;
     private String title;
     private String condition;
