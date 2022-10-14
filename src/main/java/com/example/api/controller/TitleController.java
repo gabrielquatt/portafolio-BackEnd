@@ -1,6 +1,6 @@
 package com.example.api.controller;
-import com.example.api.model.InformationEdu;
-import com.example.api.servicios.TitleService;
+import com.example.api.model.Information;
+import com.example.api.servicios.InformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -10,20 +10,20 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/infoedu/")
+@RequestMapping("api/info/")
 public class TitleController {
 
     @Autowired
-    private TitleService ts;
+    private InformationService ts;
 
     @GetMapping(value = "all", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<InformationEdu> allTitleEducation() {
+    public List<Information> allTitleEducation() {
         return ts.getAll();
     }
 
     @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteTitleEducation(@PathVariable(value = "id") Long id) {
-        Optional<InformationEdu> titleEducation = this.ts.getById(id);
+        Optional<Information> titleEducation = this.ts.getById(id);
         if (titleEducation.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
@@ -32,15 +32,15 @@ public class TitleController {
     }
 
     @PostMapping("save")
-    public ResponseEntity<?> postTitleEducation(@RequestBody InformationEdu t) {
+    public ResponseEntity<?> postTitleEducation(@RequestBody Information t) {
         if (this.ts.save(t))
             return new ResponseEntity<>(HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
     }
 
     @PutMapping("update")
-    public ResponseEntity<?> updateTitleEducation(@RequestBody InformationEdu t) {
-        Optional<InformationEdu> titleEducation = this.ts.getById(t.getId());
+    public ResponseEntity<?> updateTitleEducation(@RequestBody Information t) {
+        Optional<Information> titleEducation = this.ts.getById(t.getId());
         if(!titleEducation.isEmpty()){
             if (this.ts.save(t))
                 return new ResponseEntity<>(HttpStatus.OK);
