@@ -1,9 +1,7 @@
 package com.example.api.model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
 
 @Getter
@@ -20,7 +18,6 @@ public class Person {
     private String mail;
     private String about;
     private String ocupation;
-    //private String img_background;
     private String img_perfil;
     private Long img_id;
 

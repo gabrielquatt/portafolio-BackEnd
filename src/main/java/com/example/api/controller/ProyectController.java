@@ -18,11 +18,13 @@ public class ProyectController {
     @Autowired
     private ProyectService ps;
 
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @GetMapping(value = "all", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Proyect> allProyect() {
         return ps.getAll();
     }
 
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteProyect(@PathVariable(value = "id") Long id) {
         Optional<Proyect> proyect = this.ps.getById(id);
@@ -33,13 +35,14 @@ public class ProyectController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @PostMapping("save")
     public ResponseEntity<?> postProyect(@RequestBody Proyect p) {
         if (this.ps.save(p))
             return new ResponseEntity<>(HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
     }
-
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @PutMapping("update")
     public ResponseEntity<?> updateProyect(@RequestBody Proyect p) {
         Optional<Proyect> proyect = this.ps.getById(p.getId_proyect());

@@ -28,19 +28,19 @@ public class ImageController {
     @Autowired
     ImagenService imagenService;
 
-
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @GetMapping("findByName/{name}")
     public ResponseEntity<Imagen> getByname(@PathVariable("name")String name){
         Optional<Imagen> img = imagenService.getByName(name);
         return new ResponseEntity(img, HttpStatus.OK);
     }
-
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @GetMapping("list")
     public ResponseEntity<List<Imagen>> list(){
         List<Imagen> list = imagenService.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
-
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @PostMapping("upload")
     public ResponseEntity<?> upload(@RequestParam MultipartFile multipartFile)throws IOException {
         BufferedImage bi = ImageIO.read(multipartFile.getInputStream());
@@ -55,7 +55,7 @@ public class ImageController {
         imagenService.save(imagen);
         return new ResponseEntity(imagen, HttpStatus.OK);
     }
-
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @DeleteMapping("delete/{id}")
     public ResponseEntity<?> delete(@PathVariable(value = "id") int id)throws IOException {
         if(!imagenService.exists(id))

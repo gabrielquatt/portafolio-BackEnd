@@ -17,11 +17,13 @@ public class ExperienceController {
     @Autowired
     private ExperienceService es;
 
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @GetMapping(value = "all", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Experience> allWork_Experience() {
         return es.getAll();
     }
 
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteWork_Experience(@PathVariable(value = "id") Long id) {
         Optional<Experience> work_Experience = this.es.getById(id);
@@ -32,6 +34,7 @@ public class ExperienceController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @PostMapping("save")
     public ResponseEntity<?> postWork_Experience(@RequestBody Experience w) {
             if (this.es.save(w)){

@@ -16,11 +16,13 @@ import java.util.Optional;
         @Autowired
         private LanguageService ls;
 
+        @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
         @GetMapping(value = "all", produces = MediaType.APPLICATION_JSON_VALUE)
         public List<Language> allLanguage() {
             return ls.getAll();
         }
 
+        @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
         @DeleteMapping("delete/{id}")
         public ResponseEntity<?> deleteLanguage(@PathVariable(value = "id") Long id) {
             Optional<Language> language = this.ls.getById(id);
@@ -31,6 +33,7 @@ import java.util.Optional;
             return new ResponseEntity<>(HttpStatus.OK);
         }
 
+        @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
         @PostMapping("save")
         public ResponseEntity<?> postLanguage(@RequestBody Language l) {
             if (this.ls.save(l))
@@ -38,6 +41,7 @@ import java.util.Optional;
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
 
+        @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
         @PutMapping("update")
         public ResponseEntity<?> updateLanguage(@RequestBody Language l) {
             Optional<Language> language = this.ls.getById(l.getId_Lenguage());

@@ -17,10 +17,11 @@ public class InformationController {
 
     @Autowired
     private TitleService ts;
-
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @GetMapping(value = "all", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Titles> allInfoEducation(){return ts.getAll();}
 
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteTitleEducation(@PathVariable(value = "id") Long id) {
         Optional<Titles> titleEducation = this.ts.getById(id);
@@ -31,6 +32,7 @@ public class InformationController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @PostMapping("save")
     public ResponseEntity<?> postTitleEducation(@RequestBody Titles t) {
         if (this.ts.save(t))
@@ -38,6 +40,7 @@ public class InformationController {
         return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
     }
 
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @PutMapping("update")
     public ResponseEntity<?> updateTitleEducation(@RequestBody Titles t) {
         Optional<Titles> titleEducation = this.ts.getById(t.getIdTitle());

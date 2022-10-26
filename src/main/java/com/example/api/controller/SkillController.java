@@ -17,11 +17,13 @@ public class SkillController {
     @Autowired
     private SkillService ss;
 
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @GetMapping(value = "all", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Skill> allSkill() {
         return ss.getAll();
     }
 
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteSkill(@PathVariable(value = "id") Long id) {
         Optional<Skill> skill = this.ss.getById(id);
@@ -32,6 +34,7 @@ public class SkillController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @PostMapping("save")
     public ResponseEntity<?> postSkill(@RequestBody Skill s) {
         if (this.ss.save(s))
@@ -39,6 +42,7 @@ public class SkillController {
         return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
     }
 
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @PutMapping("update")
     public ResponseEntity<?> updateSkill(@RequestBody Skill s) {
         Optional<Skill> skill = this.ss.getById(s.getIdSkill());
