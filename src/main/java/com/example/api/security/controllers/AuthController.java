@@ -21,10 +21,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -52,6 +49,7 @@ public class AuthController {
      * Al registrarse se verificara los datos del usuario en la DB
      * si existe se retornara el Token de la sesion
      * */
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody LoginUser loginUser){
         try {
@@ -66,20 +64,21 @@ public class AuthController {
         }
     }
 
-    //Solo un Admin puede Crear Un Usuario para esta APP
-    @PostMapping("/register")
-    public ResponseEntity<Object> resgister(@RequestBody NewUser newUser, BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
-            return new ResponseEntity<>(new Message("Revise los campos e intente nuevamente"), HttpStatus.BAD_REQUEST);
-        User user = new User(newUser.getUserName(), newUser.getEmail(),
-                passwordEncoder.encode(newUser.getPassword()));
-        Set<Role> roles = new HashSet<>();
-        roles.add(roleService.getByRoleName(RoleList.ROLE_USER).get());
-        if (newUser.getRoles().contains("admin"))
-            roles.add(roleService.getByRoleName(RoleList.ROLE_ADMIN).get());
-        user.setRoles(roles);
-        userService.save(user);
-        return new ResponseEntity<>(new Message("Registro exitoso! Inicie sesión"), HttpStatus.CREATED);
-    }
+//    //Solo un Admin puede Crear Un Usuario para esta APP
+//    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
+//    @PostMapping("/register")
+//    public ResponseEntity<Object> resgister(@RequestBody NewUser newUser, BindingResult bindingResult) {
+//        if (bindingResult.hasErrors())
+//            return new ResponseEntity<>(new Message("Revise los campos e intente nuevamente"), HttpStatus.BAD_REQUEST);
+//        User user = new User(newUser.getUserName(), newUser.getEmail(),
+//                passwordEncoder.encode(newUser.getPassword()));
+//        Set<Role> roles = new HashSet<>();
+//        roles.add(roleService.getByRoleName(RoleList.ROLE_USER).get());
+//        if (newUser.getRoles().contains("admin"))
+//            roles.add(roleService.getByRoleName(RoleList.ROLE_ADMIN).get());
+//        user.setRoles(roles);
+//        userService.save(user);
+//        return new ResponseEntity<>(new Message("Registro exitoso! Inicie sesión"), HttpStatus.CREATED);
+//    }
     
 }
