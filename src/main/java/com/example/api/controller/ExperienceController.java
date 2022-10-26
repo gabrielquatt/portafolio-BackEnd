@@ -43,6 +43,7 @@ public class ExperienceController {
         return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
     }
 
+    @CrossOrigin(origins = "https://portafolio-web-gq-31166.web.app")
     @PutMapping("update")
     public ResponseEntity<?> updateWork_Experience(@RequestBody Experience w) {
             if (this.es.save(w))
